@@ -133,6 +133,16 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'email'=>[
+            'unique'=> 'Email đã được dùng',
+            'email'=>'Email phải đúng định dạng',
+            'required'=>'Email không được để trống'
+            
+        ],
+        'name'=>[
+            'required'=>'Tài khoản không được để trống',
+            'unique'=> 'Tài khoản đã tồn tại'
+        ]
     ],
 
     /*
