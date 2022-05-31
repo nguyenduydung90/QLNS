@@ -63,7 +63,7 @@
                                 <tr>
                                     <th>Xem danh sách</th>
                                     <th>Sửa</th>
-                                    <th>Thê<main></main></th>
+                                    <th>Thêm<main></main></th>
                                     <th>Xóa</th>
                                 </tr>
                             </thead>

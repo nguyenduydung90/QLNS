@@ -82,20 +82,20 @@ Route::prefix('phanquyen')->group(function(){
     });
 });
 
-Route::prefix('chucnang')->group(function(){
-    Route::prefix('bangluong')->group(function(){
-        Route::get('/',[BangluongController::class,'index'])->name('bangluong.index')->middleware('can:list_bangluong');
-        Route::get('/create',[BangluongController::class,'create'])->name('bangluong.create')->middleware('can:add_bangluong');
-        Route::post('/store',[BangluongController::class,'store'])->name('bangluong.store')->middleware('can:add_bangluong');
-        Route::get('/edit',[BangluongController::class,'edit'])->name('bangluong.edit')->middleware('can:edit_bangluong');
-        Route::post('/update',[BangluongController::class,'update'])->name('bangluong.update')->middleware('can:edit_bangluong');
-        Route::post('/updatect',[BangluongController::class,'updatect'])->name('bangluong.updatect')->middleware('can:edit_bangluong');
-        Route::get('/delete/{id}',[BangluongController::class,'destroy'])->name('bangluong.dellete')->middleware('can:delete_bangluong');
-        Route::get('/chitiet/{id}',[BangluongController::class,'show'])->name('bangluong.show')->middleware('can:list_bangluong');
-        Route::get('/detail/{mabl}/{id}',[BangluongController::class,'detail'])->name('bangluong.chitiet')->middleware('can:list_bangluong');
-        Route::get('/inbangluong/mabl={mabl}',[BangluongController::class,'inbangluong'])->name('bangluong.inbangluong')->middleware('can:list_bangluong');
-    });
-});
+// Route::prefix('chucnang')->group(function(){
+//     Route::prefix('bangluong')->group(function(){
+//         Route::get('/',[BangluongController::class,'index'])->name('bangluong.index')->middleware('can:list_bangluong');
+//         Route::get('/create',[BangluongController::class,'create'])->name('bangluong.create')->middleware('can:add_bangluong');
+//         Route::post('/store',[BangluongController::class,'store'])->name('bangluong.store')->middleware('can:add_bangluong');
+//         Route::get('/edit',[BangluongController::class,'edit'])->name('bangluong.edit')->middleware('can:edit_bangluong');
+//         Route::post('/update',[BangluongController::class,'update'])->name('bangluong.update')->middleware('can:edit_bangluong');
+//         Route::post('/updatect',[BangluongController::class,'updatect'])->name('bangluong.updatect')->middleware('can:edit_bangluong');
+//         Route::get('/delete/{id}',[BangluongController::class,'destroy'])->name('bangluong.dellete')->middleware('can:delete_bangluong');
+//         Route::get('/chitiet/{id}',[BangluongController::class,'show'])->name('bangluong.show')->middleware('can:list_bangluong');
+//         Route::get('/detail/{mabl}/{id}',[BangluongController::class,'detail'])->name('bangluong.chitiet')->middleware('can:list_bangluong');
+//         Route::get('/inbangluong/mabl={mabl}',[BangluongController::class,'inbangluong'])->name('bangluong.inbangluong')->middleware('can:list_bangluong');
+//     });
+// });
 
 Route::get('/thongtinphanmem',[UserController::class,'thongtinphanmem'])->name('thongtinphanmem');
 Route::post('/thongtinphanmem',[UserController::class,'ttpm_store'])->name('ttpm_store');
