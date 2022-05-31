@@ -207,7 +207,7 @@
                             
                         </ul>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="javascript:;">
                             <i class="fa fa-sitemap fa-fw"></i>
                             <span class="title">Chức năng</span>
@@ -221,7 +221,7 @@
                             
                             
                         </ul>
-                    </li>
+                    </li> --}}
                     <li>
                         <a href="javascript:;">
                             <i class="fa fa-search"></i>

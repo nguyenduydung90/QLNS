@@ -30,8 +30,10 @@
                         <b>DANH MỤC TÀI KHOẢN</b>
                     </div>
                     <div class="actions">
+                        @can('add_taikhoan')
                         <button type="button" id="_btnaddPB" class="btn btn-success btn-xs" onclick="addTK()"><i
                                 class="fa fa-plus"></i>&nbsp;Thêm mới tài khoản</button>
+                        @endcan
                     </div>
                 </div>
                 <div class="portlet-body form-horizontal">
@@ -64,15 +66,19 @@
                                             </select>
                                         </td>
                                         <td class="text-center">
+                                            @can('edit_taikhoan')
                                             <button type="button" data-toggle="modal"
                                                 data-target="#taikhoan-modal{{ $value->id }}"
                                                 class="btn btn-info btn-xs mbs">
                                                 <i class="fa fa-edit"></i>&nbsp; Chỉnh sửa</button>
+                                                @endcan
+                                                @can('delete_taikhoan')
                                             <button type="button"
                                                 onclick="cfDel('/phanquyen/taikhoan/delete/{{ $value->id }}')"
                                                 class="btn btn-danger btn-xs mbs" data-target="#delete-modal-confirm"
                                                 data-toggle="modal">
                                                 <i class="fa fa-trash-o"></i>&nbsp; Xóa</button>
+                                                @endcan
                                         </td>
                                     </tr>
                                     <div id="taikhoan-modal{{ $value->id }}" tabindex="-1" role="dialog"

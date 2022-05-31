@@ -29,8 +29,9 @@ class CanboRequest extends FormRequest
             'dienthoai'=>'required',
             'ngaysinh'=>'required',
             'chucvu_id'=>'required',
-            'email'=>'required|email',
-            'anh'=>'image'
+            'email'=>'required|email|unique:canbo',
+            'anh'=>'image',
+            'name'=>'required|unique:users'
             
         ];
     }

@@ -6,19 +6,25 @@ use App\Http\Requests\CanboRequest;
 use App\Models\Canbo;
 use App\Models\Chucvu;
 use App\Models\Phongban;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
 
 class CanboController extends Controller
 {
     protected $canbo;
     protected $chucvu;
     protected $phongban;
+    protected $user;
 
-    public function __construct(Canbo $canbo, Chucvu $chucvu, Phongban $phongban)
+    public function __construct(Canbo $canbo, Chucvu $chucvu, Phongban $phongban,User $user)
     {
         $this->canbo = $canbo;
         $this->chucvu = $chucvu;
         $this->phongban = $phongban;
+        $this->user = $user;
     }
     /**
      * Display a listing of the resource.
@@ -57,6 +63,7 @@ class CanboController extends Controller
     public function store(CanboRequest $request)
     {
         $inputs = $request->all();
+        $mkbandau=1;//mật khẩu mặc định khi tạo tài khoản
         if ($request->file('anh')) {
             $image = $request->file('anh');
             $name = time() . $image->getClientOriginalName();
@@ -70,6 +77,13 @@ class CanboController extends Controller
         // unset($request->hoten);
         $this->canbo->create($inputs);
 
+        $data=[
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>Hash::make($mkbandau)
+        ];
+        //tạo tài khoản đăng nhập
+        $this->user->create($data);
 
         return redirect()->route('canbo.index');
     }
@@ -111,10 +125,13 @@ class CanboController extends Controller
      * @param  \App\Models\Canbo  $canbo
      * @return \Illuminate\Http\Response
      */
-    public function update(CanboRequest $request, $id)
+    public function update(Request $request, $id)
     {
         
         $inputs = $request->all();
+        $validator = Validator::make($request->all(), [
+            'email' => 'email|unique:canbo,email,'.$id,
+        ]);
         $canbo = $this->canbo->findOrFail($id);
         $img = $request->file('anh');
         $defaulImg = 'images/avatar/no-image.png';

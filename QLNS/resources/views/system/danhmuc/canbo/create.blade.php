@@ -199,6 +199,10 @@
                                                                     <input type="email" name='email' class="form-control" id='email'
                                                                         placeholder="Nhập email" required
                                                                         value="{{ !isset($model) ? '' : $model->email }}">
+                                                                        @if ($errors->first('email'))
+                                                                        <p class="text-danger">
+                                                                            {{ $errors->first('email') }}</p>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -228,6 +232,27 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                        <div class="form-horizontal col-md-12">
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label class="col-sm-4 control-label">Tài khoản<span class="require">*</span>
+                                                                    </label>
+                            
+                                                                    <div class="col-sm-8">
+                                                                        <input type="text" name='name' class="form-control" id='name'
+                                                                            placeholder="Nhập tên tài khoản" required
+                                                                            >
+                                                                            @if ($errors->first('name'))
+                                                                    <p class="text-danger">
+                                                                        {{ $errors->first('name') }}</p>
+                                                                @endif
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                         {{-- <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label class="col-sm-4 control-label">Bằng cấp</label>
